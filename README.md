@@ -24,6 +24,7 @@ Usage:
   -n string
         Registrant name, email or domain name of the target (Required)
   -p    Print results
+  -j    Write to a json file
 ```
 
 ### Example
