@@ -90,7 +90,7 @@ func parseTable(data string) []string {
 		})
 	})
 
-	return domains[1:]
+	return domains
 }
 
 func main() {
@@ -109,6 +109,7 @@ func main() {
 	domains := parseTable(request)
 
 	if len(domains) > 0 {
+		domains = domains[1:]
 
 		if *printPtr {
 			fmt.Print(sliceVal(domains))
