@@ -19,6 +19,7 @@ import (
 )
 
 type sliceVal []string
+type domainItem map[string]interface{}
 
 func (s sliceVal) String() string {
 	var str string
@@ -43,7 +44,13 @@ func writeLines(lines []string, path string) error {
 }
 
 func writeJson(lines []string, path string) {
-	file, err := json.MarshalIndent(lines, "", "  ")
+	var domains []domainItem
+
+	for _, v := range lines {
+		domains = append(domains, domainItem{"domain": v})
+	}
+
+	file, err := json.MarshalIndent(domains, "", "  ")
 
 	if err != nil {
 		log.Fatalf("[!] Couldn't create file: %s\n", err.Error())
